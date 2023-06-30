@@ -1,9 +1,12 @@
 package main
 
-import "fmt"
+import (
+	"crypto"
+	"fmt"
 
-import "rsc.io/quote"
+	"github.com/libp2p/go-libp2p/core/crypto"
+)
 
 func main() {
-    fmt.Println(quote.Go())
+    fmt.Println(crypto.BLAKE2b_256)
 }
