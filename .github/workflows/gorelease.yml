@@ -1,0 +1,20 @@
+on:
+  push:
+
+jobs:
+  gorelease:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        go:
+          - 1.20.4
+          - 1.20.5
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-go@v3
+        with:
+          go-version: ${{ matrix.go }}
+      - run: |
+          go install golang.org/x/exp/cmd/gorelease@97b1e661b5df27f4fa041362fdee6953961e595e
+          gorelease
